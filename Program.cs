@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace HomeExercise_theads
 {
@@ -16,7 +17,7 @@ namespace HomeExercise_theads
         public static void Main()
         {
             BlockingCollection<string> sharedata = new BlockingCollection<string>(10);
-            Thread producer = new Thread(() =>
+            Task producer = new Task(() =>
             {
                 var directory = Directory.GetCurrentDirectory();
                 string projectDirectory = Directory.GetParent(directory).Parent.FullName;
@@ -39,7 +40,7 @@ namespace HomeExercise_theads
                 }
             });
                 
-            Thread consumer = new Thread(() =>
+            Task consumer = new Task(() =>
             {
                 string text = null;
                 string[] data = new string[20];
