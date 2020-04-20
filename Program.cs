@@ -84,6 +84,7 @@ namespace HomeExercise_theads
                     }
                 }
             }
+
             return text.ToString();
         }
     }
